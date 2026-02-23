@@ -1,6 +1,7 @@
 package org.levelup42.springwebdemo.product.infrastructure.database;
 import org.levelup42.springwebdemo.product.domain.Product;
 import org.levelup42.springwebdemo.product.domain.ProductRepository;
+import org.levelup42.springwebdemo.product.infrastructure.database.entity.ProductEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public class ProductReositoryImpl implements ProductRepository {
-    private final List<Product> products;
+    private final List<ProductEntity> products;
 
     public ProductReositoryImpl() {
         this.products = new ArrayList<>();
