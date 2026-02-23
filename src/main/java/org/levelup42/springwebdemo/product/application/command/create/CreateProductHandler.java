@@ -15,7 +15,7 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
     @Override
     public Void handle(CreateProductRequest request) {
         Product product = Product.builder()
-                .id(1L)  // esto se modificará es una manera un poco sucia
+                .id(2L)  // esto se modificará es una manera un poco sucia
                 .name(request.getName())
                 .description(request.getDescription())
                 .price(request.getPrice())
