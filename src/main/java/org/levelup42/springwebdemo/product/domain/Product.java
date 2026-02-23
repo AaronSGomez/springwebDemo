@@ -1,4 +1,4 @@
-package org.levelup42.springwebdemo;
+package org.levelup42.springwebdemo.product.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    private double price;
+    private Double price;
     private String image;
 
 
