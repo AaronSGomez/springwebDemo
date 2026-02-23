@@ -1,4 +1,4 @@
-package org.levelup42.springwebdemo.product.application;
+package org.levelup42.springwebdemo.product.application.command.create;
 
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
