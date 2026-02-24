@@ -1,4 +1,4 @@
-package org.levelup42.springwebdemo.product.application.command.create;
+package org.levelup42.springwebdemo.product.application.command.update;
 
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CreateProductHandler implements RequestHandler<CreateProductRequest, Void> {
+public class UpdateProductHandler implements RequestHandler<UpdateProductRequest, Void> {
 
     private final ProductRepository productRepository;
 
     @Override
-    public Void handle(CreateProductRequest request) {
+    public Void handle(UpdateProductRequest request) {
         Product product = Product.builder()
-                .id(2L)  // esto se modificará es una manera un poco sucia
+                .id(request.getId())  // esto se modificará es una manera un poco sucia
                 .name(request.getName())
                 .description(request.getDescription())
                 .price(request.getPrice())
@@ -27,7 +27,7 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
     }
 
     @Override
-    public Class<CreateProductRequest> getRequestType() {
-        return CreateProductRequest.class;
+    public Class<UpdateProductRequest> getRequestType() {
+        return UpdateProductRequest.class;
     }
 }

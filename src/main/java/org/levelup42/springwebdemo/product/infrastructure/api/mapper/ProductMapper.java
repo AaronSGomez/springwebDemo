@@ -1,6 +1,7 @@
 package org.levelup42.springwebdemo.product.infrastructure.api.mapper;
 
 import org.levelup42.springwebdemo.product.application.command.create.CreateProductRequest;
+import org.levelup42.springwebdemo.product.application.command.update.UpdateProductRequest;
 import org.levelup42.springwebdemo.product.domain.Product;
 import org.levelup42.springwebdemo.product.infrastructure.api.dto.ProductDto;
 import org.mapstruct.Mapper;
@@ -12,6 +13,9 @@ import org.mapstruct.ReportingPolicy;
 public interface ProductMapper {
 
     CreateProductRequest mapToCreateProductRequest(ProductDto productDto);
-
+    UpdateProductRequest mapToUpdateProductRequest(ProductDto productDto);
     ProductDto mapToProduct(Product product);
+
+
+
 }

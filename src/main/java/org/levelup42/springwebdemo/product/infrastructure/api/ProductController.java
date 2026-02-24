@@ -3,6 +3,10 @@ package org.levelup42.springwebdemo.product.infrastructure.api;
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.Mediator;
 import org.levelup42.springwebdemo.product.application.command.create.CreateProductRequest;
+import org.levelup42.springwebdemo.product.application.command.delete.DeleteProductRequest;
+import org.levelup42.springwebdemo.product.application.command.update.UpdateProductRequest;
+import org.levelup42.springwebdemo.product.application.query.getAll.GetAllProductRequest;
+import org.levelup42.springwebdemo.product.application.query.getAll.GetAllProductResponse;
 import org.levelup42.springwebdemo.product.application.query.getById.GetProductByIdRequest;
 import org.levelup42.springwebdemo.product.application.query.getById.GetProductByIdResponse;
 import org.levelup42.springwebdemo.product.infrastructure.api.dto.ProductDto;
@@ -33,19 +37,24 @@ public class ProductController implements ProductApi {
     // update
     @PutMapping("")
     public ResponseEntity<Void> updateProductById(@RequestBody ProductDto productDto) {
-        return ResponseEntity.notFound().build();
+        UpdateProductRequest request= productMapper.mapToUpdateProductRequest(productDto);
+        mediator.dispach(request);
+        return ResponseEntity.noContent().build();
     }
 
     // delete
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProductById(@PathVariable Long id) {
+        mediator.dispach(new DeleteProductRequest(id));
         return ResponseEntity.noContent().build();
     }
 
     // select all
     @GetMapping("")
     public ResponseEntity<List<ProductDto>> getAllProduct(@RequestParam(required = false) String pageSize) {
-        return ResponseEntity.ok(null);
+        GetAllProductResponse response =  mediator.dispach(new GetAllProductRequest());
+        List<ProductDto> productDtos= response.getProducts().stream().map(productMapper:: mapToProduct).toList();
+        return ResponseEntity.ok(productDtos);
     }
 
     // select by id
