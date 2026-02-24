@@ -1,6 +1,5 @@
 package org.levelup42.springwebdemo.common.mediator;
 
-import org.levelup42.springwebdemo.product.domain.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

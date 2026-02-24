@@ -2,8 +2,9 @@ package org.levelup42.springwebdemo.product.application.query.getById;
 
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
-import org.levelup42.springwebdemo.product.domain.Product;
-import org.levelup42.springwebdemo.product.domain.ProductRepository;
+import org.levelup42.springwebdemo.product.domain.entity.Product;
+import org.levelup42.springwebdemo.product.domain.exception.ProductNotFoundException;
+import org.levelup42.springwebdemo.product.domain.port.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +17,7 @@ public class GetProductByIdHandler implements RequestHandler<GetProductByIdReque
     @Override
     public GetProductByIdResponse handle(GetProductByIdRequest request) {
         Product product = productRepository.findById(request.getId()).
-                orElseThrow(() -> new IllegalArgumentException("Product not found"));
+                orElseThrow(() -> new ProductNotFoundException(request.getId()));
         return new GetProductByIdResponse(product);
     }
 

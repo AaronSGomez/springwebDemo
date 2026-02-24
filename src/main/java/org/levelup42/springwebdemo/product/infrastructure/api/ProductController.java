@@ -10,7 +10,9 @@ import org.levelup42.springwebdemo.product.application.query.getAll.GetAllProduc
 import org.levelup42.springwebdemo.product.application.query.getAll.GetAllProductResponse;
 import org.levelup42.springwebdemo.product.application.query.getById.GetProductByIdRequest;
 import org.levelup42.springwebdemo.product.application.query.getById.GetProductByIdResponse;
+import org.levelup42.springwebdemo.product.infrastructure.api.dto.CreateProductDto;
 import org.levelup42.springwebdemo.product.infrastructure.api.dto.ProductDto;
+import org.levelup42.springwebdemo.product.infrastructure.api.dto.UpdateProductDto;
 import org.levelup42.springwebdemo.product.infrastructure.api.mapper.ProductMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,7 @@ public class ProductController implements ProductApi {
 
     // guardar
     @PostMapping("")
-    public ResponseEntity<Void> saveProduct(@RequestBody @Valid ProductDto productDto) {
+    public ResponseEntity<Void> saveProduct(@RequestBody @Valid CreateProductDto productDto) {
         CreateProductRequest request = productMapper.mapToCreateProductRequest(productDto);
         mediator.dispach(request);
         return ResponseEntity.created(URI.create("/api/v1/products/".concat(productDto.getId().toString()))).build();
@@ -37,7 +39,7 @@ public class ProductController implements ProductApi {
 
     // update
     @PutMapping("")
-    public ResponseEntity<Void> updateProductById(@RequestBody @Valid ProductDto productDto) {
+    public ResponseEntity<Void> updateProductById(@RequestBody @Valid UpdateProductDto productDto) {
         UpdateProductRequest request= productMapper.mapToUpdateProductRequest(productDto);
         mediator.dispach(request);
         return ResponseEntity.noContent().build();

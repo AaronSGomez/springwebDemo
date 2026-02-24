@@ -1,8 +1,8 @@
 package org.levelup42.springwebdemo.product.infrastructure.database;
 
 import lombok.RequiredArgsConstructor;
-import org.levelup42.springwebdemo.product.domain.Product;
-import org.levelup42.springwebdemo.product.domain.ProductRepository;
+import org.levelup42.springwebdemo.product.domain.entity.Product;
+import org.levelup42.springwebdemo.product.domain.port.ProductRepository;
 import org.levelup42.springwebdemo.product.infrastructure.database.entity.ProductEntity;
 import org.levelup42.springwebdemo.product.infrastructure.database.mapper.ProductEntityMapper;
 import org.springframework.stereotype.Repository;

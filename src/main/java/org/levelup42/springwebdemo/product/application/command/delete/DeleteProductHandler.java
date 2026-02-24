@@ -2,9 +2,7 @@ package org.levelup42.springwebdemo.product.application.command.delete;
 
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
-import org.levelup42.springwebdemo.product.application.command.create.CreateProductRequest;
-import org.levelup42.springwebdemo.product.domain.Product;
-import org.levelup42.springwebdemo.product.domain.ProductRepository;
+import org.levelup42.springwebdemo.product.domain.port.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service

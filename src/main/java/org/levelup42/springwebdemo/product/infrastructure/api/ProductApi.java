@@ -1,7 +1,8 @@
 package org.levelup42.springwebdemo.product.infrastructure.api;
 
-import org.levelup42.springwebdemo.product.domain.Product;
+import org.levelup42.springwebdemo.product.infrastructure.api.dto.CreateProductDto;
 import org.levelup42.springwebdemo.product.infrastructure.api.dto.ProductDto;
+import org.levelup42.springwebdemo.product.infrastructure.api.dto.UpdateProductDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +14,8 @@ public interface ProductApi {
 
     ResponseEntity<List<ProductDto>> getAllProduct(@RequestParam(required = false) String pageSize);
     ResponseEntity<ProductDto> getProductById(@PathVariable Long id);
-    ResponseEntity<Void> saveProduct(@RequestBody ProductDto productDto);
-    ResponseEntity<Void> updateProductById(@RequestBody ProductDto productDto);
+    ResponseEntity<Void> saveProduct(@RequestBody CreateProductDto productDto);
+    ResponseEntity<Void> updateProductById(@RequestBody UpdateProductDto productDto);
     ResponseEntity<Void> deleteProductById(@PathVariable Long id);
 
 }

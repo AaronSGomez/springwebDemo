@@ -1,4 +1,6 @@
-package org.levelup42.springwebdemo.product.domain;
+package org.levelup42.springwebdemo.product.domain.port;
+
+import org.levelup42.springwebdemo.product.domain.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

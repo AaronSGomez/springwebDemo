@@ -3,7 +3,7 @@ package org.levelup42.springwebdemo.product.application.query.getById;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.levelup42.springwebdemo.product.domain.Product;
+import org.levelup42.springwebdemo.product.domain.entity.Product;
 
 @Builder
 @Data

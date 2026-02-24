@@ -1,4 +1,4 @@
-package org.levelup42.springwebdemo.product.domain;
+package org.levelup42.springwebdemo.product.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

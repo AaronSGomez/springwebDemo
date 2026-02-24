@@ -3,6 +3,7 @@ package org.levelup42.springwebdemo.product.application.command.create;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.levelup42.springwebdemo.common.mediator.Request;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @AllArgsConstructor
@@ -12,7 +13,7 @@ public class CreateProductRequest implements Request<Void> {
     private String name;
     private String description;
     private Double price;
-    private String image;
+    private MultipartFile file;
 
 
 }
