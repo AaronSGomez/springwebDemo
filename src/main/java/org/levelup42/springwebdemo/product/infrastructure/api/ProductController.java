@@ -1,5 +1,6 @@
 package org.levelup42.springwebdemo.product.infrastructure.api;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.levelup42.springwebdemo.common.mediator.Mediator;
 import org.levelup42.springwebdemo.product.application.command.create.CreateProductRequest;
@@ -28,7 +29,7 @@ public class ProductController implements ProductApi {
 
     // guardar
     @PostMapping("")
-    public ResponseEntity<Void> saveProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity<Void> saveProduct(@RequestBody @Valid ProductDto productDto) {
         CreateProductRequest request = productMapper.mapToCreateProductRequest(productDto);
         mediator.dispach(request);
         return ResponseEntity.created(URI.create("/api/v1/products/".concat(productDto.getId().toString()))).build();
@@ -36,7 +37,7 @@ public class ProductController implements ProductApi {
 
     // update
     @PutMapping("")
-    public ResponseEntity<Void> updateProductById(@RequestBody ProductDto productDto) {
+    public ResponseEntity<Void> updateProductById(@RequestBody @Valid ProductDto productDto) {
         UpdateProductRequest request= productMapper.mapToUpdateProductRequest(productDto);
         mediator.dispach(request);
         return ResponseEntity.noContent().build();
