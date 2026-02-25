@@ -15,11 +15,14 @@ public class FixProductsPriceSchedule {
 
     @Scheduled(fixedRate = 60000)
     public void fixProductsPrice(){
+
         log.info("Fixing products price schedule");
+
         productRepository.findAll().forEach(product -> {
             product.setPrice(product.getPrice()*1.1);
             productRepository.upsert(product);
         });
+
         log.info("Fixed products price schedule complete");
     }
 }
