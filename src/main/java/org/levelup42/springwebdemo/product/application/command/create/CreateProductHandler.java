@@ -1,6 +1,7 @@
 package org.levelup42.springwebdemo.product.application.command.create;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
 import org.levelup42.springwebdemo.common.util.FileUtils;
 import org.levelup42.springwebdemo.product.domain.entity.Product;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CreateProductHandler implements RequestHandler<CreateProductRequest, Void> {
 
     private final ProductRepository productRepository;
@@ -16,6 +18,8 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
 
     @Override
     public Void handle(CreateProductRequest request) {
+
+        log.info("Creating product {}", request.getId());
 
         String uniquefilename = fileUtils.saveProductImage(request.getFile());
 
@@ -28,6 +32,9 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
                 .build();
 
         productRepository.upsert(product);
+
+        log.info("Created product {}", product);
+
         return null;
     }
 

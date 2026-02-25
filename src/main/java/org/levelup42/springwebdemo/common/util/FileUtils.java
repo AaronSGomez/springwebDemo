@@ -26,7 +26,7 @@ public class FileUtils {
 
             Path path = Path.of("uploads/products/");
 
-            if(Files.exists(path)){
+            if(!Files.exists(path)){
                 Files.createDirectories(path);
             }
             Files.copy(inputStream,path.resolve(uniquefilename), StandardCopyOption.REPLACE_EXISTING);

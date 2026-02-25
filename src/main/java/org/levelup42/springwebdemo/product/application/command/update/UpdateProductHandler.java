@@ -2,6 +2,7 @@ package org.levelup42.springwebdemo.product.application.command.update;
 
 import ch.qos.logback.core.util.FileUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
 import org.levelup42.springwebdemo.common.mediator.RequestHandler;
 import org.levelup42.springwebdemo.common.util.FileUtils;
@@ -22,6 +23,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UpdateProductHandler implements RequestHandler<UpdateProductRequest, Void> {
 
     private final ProductRepository productRepository;
@@ -30,6 +32,8 @@ public class UpdateProductHandler implements RequestHandler<UpdateProductRequest
 
     @Override
     public Void handle(UpdateProductRequest request) {
+
+        log.info("Updating product {}", request.getId());
 
         String uniquefilename = fileUtils.saveProductImage(request.getFile());
 
@@ -42,6 +46,9 @@ public class UpdateProductHandler implements RequestHandler<UpdateProductRequest
                 .build();
 
         productRepository.upsert(product);
+
+        log.info("Created product {}", product);
+
         return null;
     }
 
