@@ -24,5 +24,6 @@ public class FixProductsPriceSchedule {
         });
 
         log.info("Fixed products price schedule complete");
+
     }
 }
